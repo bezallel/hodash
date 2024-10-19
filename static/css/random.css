@@ -503,7 +503,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 533px) and (max-width: 533px){
+@media only screen and (min-width: 533px) and (max-width: 633px){
 
     h1{
         font-size: 20px;
@@ -827,6 +827,109 @@ h1 {
 }
 
 
+@media only screen and (min-width: 641px) and (max-width: 655px){
+
+    h1{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+
+    
+    
+    #guestTable {
+        font-size: 10px;
+    }
+    
+    #guestTable th,
+    #guestTable td {
+        color: #e0e0e0;
+   }
+    
+    .button-header {
+        margin-top: -1%;
+    }
+
+
+    .input-section {
+        margin-top: -3%;
+        display: grid; /* Use grid to manage the layout */
+        grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+        grid-template-rows: repeat(6, auto); 
+        width: 603px;
+        margin-left: -.3%;
+    }
+    
+    .input-row {
+        display: flex;
+        flex-wrap: wrap; /* Ensure input boxes wrap into rows */
+        justify-content: space-between;
+        width: 90%;
+        margin-bottom: 10px;
+    }
+    
+    .input-box {
+        margin: 2px; /* Add some margin between input boxes */
+        font-size: 10px;
+        min-width: unset; /* Remove minimum width constraint */
+    }
+    
+    .form-box {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+    
+    #estimate {
+        width: 20%; /* Make the button full-width */
+        height: 30px; /* Adjust height */
+    }
+    
+    .custom-dropdown .icon-arrow {
+        right: 10px; /* Move the arrow closer to the edge */
+    }
+    .dropdown-selected{
+        width: 40%;
+    }
+    
+    .custom-dropdown .icon-arrow {
+        position: absolute;
+        right: 20px; /* Position the arrow closer to the edge */
+        top: 50%;
+        transform: translateY(-50%); /* Vertically center the icon */
+    }
+
+    #author {
+    display: none;
+    }
+
+}
 @media only screen and (min-width: 658px) and (max-width: 658px){
 
     h1{
@@ -2166,7 +2269,7 @@ h1 {
 
 
 @media only screen and (min-width: 854px) and (max-width: 854px) {
-   h1{
+    h1{
         font-size: 20px;
     }
 
@@ -2944,7 +3047,7 @@ h1 {
     }
 }
 
-@media only screen and (min-width: 190px) and (max-width: 344px) {
+@media only screen and (min-width: 344px) and (max-width: 475px) {
     .popup-overlay {
         display: flex;
         opacity: 1;
