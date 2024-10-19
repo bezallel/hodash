@@ -157,9 +157,9 @@ function predict(event) {
 
 // Create options for each dropdown
 window.onload = function() {
-    createOptions('leadTimeOptions', 1, 100); // Lead time options from 1 to 30 days
+    createOptions('leadTimeOptions', 0, 737); // Lead time options from 1 to 30 days
     createOptions('nightlyHoursOptions', 1, 1000); // Nightly hours from 1 to 24 hours
-    createOptions('daysOnWaitListOptions', 1, 370); // Wait list options from 1 to 370 days
+    createOptions('daysOnWaitListOptions', 1, 391); // Wait list options from 1 to 370 days
 };
 
   
