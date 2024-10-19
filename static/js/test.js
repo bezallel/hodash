@@ -361,16 +361,15 @@ function clearInputHighlights() {
 
 
 // ============================================POP-UP INTRO=========================================
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const popup = document.getElementById('tiltPopup');
     const closeButton = document.getElementById('closePopup');
 
     // Function to check screen width and show the popup
-    function checkScreenSize() {
-        if (window.innerWidth <= 431 || window.innerHeight >= 601) {
-            popup.classList.add('show'); // Show popup
-        } else {
-            popup.classList.remove('show'); // Hide popup if conditions not met
+    function checkScreenWidth() {{
+            popup.classList.remove('show'); // Hide popup if wider than 768px
         }
     }
 
@@ -379,14 +378,12 @@ document.addEventListener("DOMContentLoaded", function() {
         popup.classList.remove('show');
     });
 
-    // Check screen size on window resize
-    window.addEventListener('resize', checkScreenSize);
+    // Check screen width on window resize
+    window.addEventListener('resize', checkScreenWidth);
 
     // Show the popup on page load
-    checkScreenSize(); // Ensure the popup shows up correctly on load
+    checkScreenWidth(); // Ensure the popup shows up correctly on load
 });
-
-
 
 
 
