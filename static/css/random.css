@@ -767,10 +767,6 @@ h1 {
         }
 
 
-
-
-
-
     .input-section {
         margin-top: -3%;
         display: grid; /* Use grid to manage the layout */
@@ -1138,7 +1134,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 667px) and (max-width: 667px){
+@media only screen and (min-width: 667px) and (max-width: 719px){
 
     h1{
         font-size: 20px;
@@ -1237,7 +1233,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 720px) and (max-width: 720px){
+@media only screen and (min-width: 720px) and (max-width: 723px){
 
     h1{
         font-size: 20px;
@@ -1343,7 +1339,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 724px) and (max-width: 724px){
+@media only screen and (min-width: 724px) and (max-width: 730px){
 
     h1{
         font-size: 20px;
@@ -1448,7 +1444,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 731px) and (max-width: 731px){
+@media only screen and (min-width: 731px) and (max-width: 735px){
 
     h1{
         font-size: 20px;
@@ -1659,7 +1655,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 740px) and (max-width: 740px){
+@media only screen and (min-width: 740px) and (max-width: 782px){
 
     h1{
         font-size: 20px;
@@ -1764,7 +1760,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 783px) and (max-width: 783px){
+@media only screen and (min-width: 783px) and (max-width: 799px){
 
     h1{
         font-size: 20px;
@@ -1865,7 +1861,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 800px) and (max-width: 800px){
+@media only screen and (min-width: 800px) and (max-width: 811px){
 
     h1{
         font-size: 20px;
@@ -1966,7 +1962,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 812px) and (max-width: 812px){
+@media only screen and (min-width: 812px) and (max-width: 822px){
 
     h1{
         font-size: 20px;
@@ -2176,7 +2172,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 824px) and (max-width: 824px) {
+@media only screen and (min-width: 824px) and (max-width: 843px) {
     h1{
         font-size: 20px;
     }
@@ -2279,7 +2275,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 844px) and (max-width: 844px) {
+@media only screen and (min-width: 844px) and (max-width: 853px) {
     .console-section{
         width: 117.5%;
         margin-left: -1.5%;
@@ -2371,7 +2367,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 854px) and (max-width: 854px) {
+@media only screen and (min-width: 854px) and (max-width: 895px) {
     h1{
         font-size: 20px;
     }
@@ -2475,7 +2471,7 @@ h1 {
 
 
 
-@media only screen and (min-width: 896px) and (max-width: 896px) {
+@media only screen and (min-width: 896px) and (max-width: 913px) {
     .console-section{
         width: 101.5%;
         margin-left: -.7%;
@@ -2712,7 +2708,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 915px) and (max-width: 915px) {
+@media only screen and (min-width: 915px) and (max-width: 925px) {
     .console-section{
         width: 101.5%;
         margin-left: -.7%;
