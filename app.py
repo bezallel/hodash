@@ -6,7 +6,7 @@ import pickle
 import numpy as np
 import time
 
-model = pickle.load(open('hotel.pkl', 'rb'))
+model = pickle.load(open('hotel22.pkl', 'rb'))
 
 # Mappings for displaying labels
 hotel_mapping = { 0: "City Hotel", 1: "Resort Hotel" }
