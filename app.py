@@ -10,7 +10,7 @@ model = pickle.load(open('hotel22.pkl', 'rb'))
 
 # Mappings for displaying labels
 hotel_mapping = { 0: "City Hotel", 1: "Resort Hotel" }
-lead_time_mapping = {i: f"Day {i}" for i in range(1, 101)}
+lead_time_mapping = {i: f"Day {i}" for i in range(0, 101)}
 arrival_month_mapping = { 0: "April", 1: "August", 2: "December", 3: "February", 4: "January", 5: "July", 6: "June", 7: "March", 8: "May", 9: "November", 10: "October", 11: "September" }
 stays_in_weekend_nights_mapping = {
   0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10",
@@ -65,9 +65,9 @@ booking_changes_mapping = {
   20: "20", 21: "21"
 }
 deposit_type_mapping = { 0: "No Deposit", 1: "Non Refund", 2: "Refundable" }
-days_in_waiting_list_mapping = {i: f"Day {i}" for i in range(1, 371)}
+days_in_waiting_list_mapping = {i: f"Day {i}" for i in range(0, 371)}
 customer_type_mapping = { 0: "Contract", 1: "Group", 2: "Transient", 3: "Transient-Party" }
-adr_mapping = {i: f"Day {i}" for i in range(1, 1001)}
+adr_mapping = {i: f"Day {i}" for i in range(0, 1001)}
 total_of_special_requests_mapping = {0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5"}
 country_mapping = {
     0: "Aruba", 1: "Angola", 2: "Anguilla", 3: "Albania", 4: "Andorra", 5: "United Arab Emirates", 
