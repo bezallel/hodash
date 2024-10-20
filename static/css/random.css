@@ -2777,7 +2777,7 @@ h1 {
 
 
 
-@media only screen and (min-width: 926px) and (max-width: 926px) {
+@media only screen and (min-width: 926px) and (max-width: 931px) {
     .console-section{
         width: 101.5%;
         margin-left: -.7%;
@@ -2828,7 +2828,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 932px) and (max-width: 932px) {
+@media only screen and (min-width: 932px) and (max-width: 1023px) {
     .console-section{
         width: 101.5%;
         margin-left: -.7%;
@@ -2879,7 +2879,7 @@ h1 {
 }
 
 
-@media only screen and (min-width: 1024px) and (max-width: 1024px) {
+@media only screen and (min-width: 1024px) and (max-width: 1179px) {
     .console-section{
         width: 101.5%;
         margin-left: -.7%;
