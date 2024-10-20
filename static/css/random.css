@@ -3282,7 +3282,7 @@ h1 {
     }
 }
 
-@media only screen and (min-height: 855px) and (max-height: 950px) {
+@media only screen and (min-height: 855px) and (max-height: 890px) {
     .popup-overlay {
         display: flex;
         opacity: 1;
