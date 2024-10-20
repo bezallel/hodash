@@ -3206,7 +3206,7 @@ h1 {
     }
 }
 
-@media only screen and (min-width: 411px) and (max-width: 412px) {
+@media only screen and (min-width: 411px) and (max-width: 610px) {
     .popup-overlay {
         display: flex;
         opacity: 1;
