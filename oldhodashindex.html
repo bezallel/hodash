@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="../static/css/random.css">
+
+    <title>Hotel Operations</title>
+    
+</head>
+<body>
+
+
+    <div class="wrapper">
+
+
+        <h1 class="heading">Hotel Operations Dashboard</h1>
+        <div class="console-section">
+            <h2>Guest List</h2>
+            <div class="predictions-container"> 
+                <div class="table-scroll">
+                    <table id="guestTable">
+                        <thead>
+                            <tr>
+                                <th class="button-header">Hotel</th>
+                                <th class="button-header">Month</th>
+                                <th class="button-header">Week Nights</th>
+                                <th class="button-header">Adults</th>
+                                <th class="button-header">Children</th>
+                                <th class="button-header">Meal</th>
+                                <th class="button-header">Country</th>
+                                <th class="button-header">Cancellations</th>
+                                <th class="button-header">Completed</th>
+                                <th class="button-header">Assigned</th>
+                            </tr>
+                        </thead>
+                        <tbody id="guestBody">
+                            <!-- Guest rows will be added here dynamically -->
+                        </tbody>
+                    </table>
+                    <div class="table-body-scroll"> <!-- New div for vertical scrolling -->
+                        <table id="guestTableBody">
+                            <tbody>
+                                <!-- Dynamically added guest rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    
+    
+    
+
+
+
+
+
+
+
+
+        <form action="{{ url_for('predict')}}" method="post" onsubmit="predict(event); return false;">
+            <div class="form-box"> 
+                <div class="two-forms">
+                    <!-- Row 1 -->
+                    <!-- <button type="button" class="accordion">Basic Information</button> -->
+                    <div class="input-section"> 
+                            <div class="input-row">
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="hotelDropdown">
+                                        <div class="dropdown-selected" data-default-text="Select Hotel">Hotel <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" class="option-text" data-value="0">City Hotel</div>
+                                            <div class="dropdown-option" class="option-text" data-value="1">Resort Hotel</div>
+                                        </div>
+                                        <input type="hidden" name="hotel" value="">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="leadTimeDropdown">
+                                        <div class="dropdown-selected">Lead Time (Days) <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options" id="leadTimeOptions">  
+                                        </div>
+                                        <input type="hidden" name="lead_time" value="">
+                                    </div>
+                                </div>
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="arrivalMonthDropdown">
+                                        <div class="dropdown-selected">Month <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">January</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">February</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">March</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">April</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">May</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">June</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">July</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">August</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">September</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">October</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">November</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">December</div>
+                                        </div>
+                                        <input type="hidden" name="arrival_month" value="">
+                                    </div>
+                                </div>
+                                
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="weekendNightsDropdown">
+                                        <div class="dropdown-selected">Weekend Nights<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">11</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="12">12</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="13">13</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="14">14</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="15">15</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="16">16</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="17">17</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="18">18</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="19">19</div>
+                                        </div>
+                                        <input type="hidden" name="stays_in_weekend_nights" value="">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="weekNightsDropdown">
+                                        <div class="dropdown-selected">Week Nights<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">11</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="13">13</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="12">12</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="15">15</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="14">14</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="17">17</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="16">16</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="18">18</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="19">19</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="20">20</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="21">21</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="22">22</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="23">23</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="24">24</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="25">25</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="26">26</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="27">27</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="28">28</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="29">29</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="30">30</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="31">31</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="32">32</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="33">33</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="34">34</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="35">35</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="36">36</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="37">37</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="38">38</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="39">39</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="40">40</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="41">41</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="42">42</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="43">43</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="44">44</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="45">45</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="46">46</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="47">47</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="48">48</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="49">49</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="50">50</div>
+                                        </div>
+                                        <input type="hidden" name="stays_in_week_nights" value="">
+                                    </div>
+                                </div>
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="adultsDropdown">
+                                        <div class="dropdown-selected">Adults <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">11</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="12">12</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="13">13</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="14">14</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="15">15</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="16">16</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="17">17</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="18">18</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="19">19</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="20">20</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="21">21</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="22">22</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="23">23</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="24">24</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="25">25</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="26">26</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="27">27</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="28">28</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="29">29</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="30">30</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="31">31</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="32">32</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="33">33</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="34">34</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="35">35</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="36">36</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="37">37</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="38">38</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="39">39</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="40">40</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="41">41</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="42">42</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="43">43</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="44">44</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="45">45</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="46">46</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="47">47</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="48">48</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="49">49</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="50">50</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="51">51</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="52">52</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="53">53</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="54">54</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="55">55</div>
+                                        </div>
+                                        <input type="hidden" name="adults" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Row 2 -->
+                        
+                        <!-- <button type="button" class="accordion">Basic Information</button> -->
+                            <div class="input-row">
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="childrenDropdown">
+                                        <div class="dropdown-selected">Children<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                        </div>
+                                        <input type="hidden" name="children" value="">
+                                    </div>
+                                </div>
+                                
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="babiesDropdown">
+                                        <div class="dropdown-selected">Babies <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                        </div>
+                                        <input type="hidden" name="babies" value="">
+                                    </div>
+                                </div>
+                            
+                                
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="mealDropdown">
+                                        <div class="dropdown-selected">Meal <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">Bed & Breakfast</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">Full Board</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">Half Board</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">Self Catering</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">Not Specified</div>
+                                        </div>
+                                        <input type="hidden" name="meal" value="">
+                                    </div>
+                                </div>
+                                
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="countryDropdown">
+                                        <div class="dropdown-selected">Country <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:0;" class="option-text" data-value="0">Aruba</div>
+                                            <div class="dropdown-option" style="--i:1;" class="option-text" data-value="1">Angola</div>
+                                            <div class="dropdown-option" style="--i:2;" class="option-text" data-value="2">Anguilla</div>
+                                            <div class="dropdown-option" style="--i:3;" class="option-text" data-value="3">Albania</div>
+                                            <div class="dropdown-option" style="--i:4;" class="option-text" data-value="4">Andorra</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">United Arab Emirates</div>
+                                            <div class="dropdown-option" style="--i:6;" class="option-text" data-value="6">Argentina</div>
+                                            <div class="dropdown-option" style="--i:7;" class="option-text" data-value="7">Armenia</div>
+                                            <div class="dropdown-option" style="--i:8;" class="option-text" data-value="8">American Samoa</div>
+                                            <div class="dropdown-option" style="--i:9;" class="option-text" data-value="9">Antarctica</div>
+                                            <div class="dropdown-option" style="--i:10;" class="option-text" data-value="10">French Territories</div>
+                                            <div class="dropdown-option" style="--i:11;" class="option-text" data-value="11">Australia</div>
+                                            <div class="dropdown-option" style="--i:12;" class="option-text" data-value="12">Austria</div>
+                                            <div class="dropdown-option" style="--i:13;" class="option-text" data-value="13">Azerbaijan</div>
+                                            <div class="dropdown-option" style="--i:14;" class="option-text" data-value="14">Burundi</div>
+                                            <div class="dropdown-option" style="--i:15;" class="option-text" data-value="15">Belgium</div>
+                                            <div class="dropdown-option" style="--i:16;" class="option-text" data-value="16">Benin</div>
+                                            <div class="dropdown-option" style="--i:17;" class="option-text" data-value="17">Burkina Faso</div>
+                                            <div class="dropdown-option" style="--i:18;" class="option-text" data-value="18">Bangladesh</div>
+                                            <div class="dropdown-option" style="--i:19;" class="option-text" data-value="19">Bulgaria</div>
+                                            <div class="dropdown-option" style="--i:20;" class="option-text" data-value="20">Bahrain</div>
+                                            <div class="dropdown-option" style="--i:21;" class="option-text" data-value="21">Bahamas</div>
+                                            <div class="dropdown-option" style="--i:22;" class="option-text" data-value="22">Bosnia and Herzegovina</div>
+                                            <div class="dropdown-option" style="--i:23;" class="option-text" data-value="23">Belarus</div>
+                                            <div class="dropdown-option" style="--i:24;" class="option-text" data-value="24">Bolivia</div>
+                                            <div class="dropdown-option" style="--i:25;" class="option-text" data-value="25">Brazil</div>
+                                            <div class="dropdown-option" style="--i:26;" class="option-text" data-value="26">Barbados</div>
+                                            <div class="dropdown-option" style="--i:27;" class="option-text" data-value="27">Botswana</div>
+                                            <div class="dropdown-option" style="--i:28;" class="option-text" data-value="28">Central African Republic</div>
+                                            <div class="dropdown-option" style="--i:29;" class="option-text" data-value="29">Switzerland</div>
+                                            <div class="dropdown-option" style="--i:30;" class="option-text" data-value="30">Chile</div>
+                                            <div class="dropdown-option" style="--i:31;" class="option-text" data-value="31">China</div>
+                                            <div class="dropdown-option" style="--i:32;" class="option-text" data-value="32">Côte d'Ivoire</div>
+                                            <div class="dropdown-option" style="--i:33;" class="option-text" data-value="33">Cameroon</div>
+                                            <div class="dropdown-option" style="--i:34;" class="option-text" data-value="34">Congo</div>
+                                            <div class="dropdown-option" style="--i:35;" class="option-text" data-value="35">Colombia</div>
+                                            <div class="dropdown-option" style="--i:36;" class="option-text" data-value="36">Comoros</div>
+                                            <div class="dropdown-option" style="--i:37;" class="option-text" data-value="37">Cabo Verde</div>
+                                            <div class="dropdown-option" style="--i:38;" class="option-text" data-value="38">Costa Rica</div>
+                                            <div class="dropdown-option" style="--i:39;" class="option-text" data-value="39">Cuba</div>
+                                            <div class="dropdown-option" style="--i:40;" class="option-text" data-value="40">Cayman Islands</div>
+                                            <div class="dropdown-option" style="--i:41;" class="option-text" data-value="41">Cyprus</div>
+                                            <div class="dropdown-option" style="--i:42;" class="option-text" data-value="42">Czech Republic</div>
+                                            <div class="dropdown-option" style="--i:43;" class="option-text" data-value="43">Germany</div>
+                                            <div class="dropdown-option" style="--i:44;" class="option-text" data-value="44">Djibouti</div>
+                                            <div class="dropdown-option" style="--i:45;" class="option-text" data-value="45">Dominica</div>
+                                            <div class="dropdown-option" style="--i:46;" class="option-text" data-value="46">Denmark</div>
+                                            <div class="dropdown-option" style="--i:47;" class="option-text" data-value="47">Dominican Republic</div>
+                                            <div class="dropdown-option" style="--i:48;" class="option-text" data-value="48">Algeria</div>
+                                            <div class="dropdown-option" style="--i:49;" class="option-text" data-value="49">Ecuador</div>
+                                            <div class="dropdown-option" style="--i:50;" class="option-text" data-value="50">Egypt</div>
+                                            <div class="dropdown-option" style="--i:51;" class="option-text" data-value="51">Spain</div>
+                                            <div class="dropdown-option" style="--i:52;" class="option-text" data-value="52">Estonia</div>
+                                            <div class="dropdown-option" style="--i:53;" class="option-text" data-value="53">Ethiopia</div>
+                                            <div class="dropdown-option" style="--i:54;" class="option-text" data-value="54">Finland</div>
+                                            <div class="dropdown-option" style="--i:55;" class="option-text" data-value="55">Fiji</div>
+                                            <div class="dropdown-option" style="--i:56;" class="option-text" data-value="56">France</div>
+                                            <div class="dropdown-option" style="--i:57;" class="option-text" data-value="57">Faroe Islands</div>
+                                            <div class="dropdown-option" style="--i:58;" class="option-text" data-value="58">Gabon</div>
+                                            <div class="dropdown-option" style="--i:59;" class="option-text" data-value="59">United Kingdom</div>
+                                            <div class="dropdown-option" style="--i:60;" class="option-text" data-value="60">Georgia</div>
+                                            <div class="dropdown-option" style="--i:61;" class="option-text" data-value="61">Guernsey</div>
+                                            <div class="dropdown-option" style="--i:62;" class="option-text" data-value="62">Ghana</div>
+                                            <div class="dropdown-option" style="--i:63;" class="option-text" data-value="63">Gibraltar</div>
+                                            <div class="dropdown-option" style="--i:64;" class="option-text" data-value="64">Guadeloupe</div>
+                                            <div class="dropdown-option" style="--i:65;" class="option-text" data-value="65">Guinea-Bissau</div>
+                                            <div class="dropdown-option" style="--i:66;" class="option-text" data-value="66">Greece</div>
+                                            <div class="dropdown-option" style="--i:67;" class="option-text" data-value="67">Guatemala</div>
+                                            <div class="dropdown-option" style="--i:68;" class="option-text" data-value="68">Guyana</div>
+                                            <div class="dropdown-option" style="--i:69;" class="option-text" data-value="69">Hong Kong</div>
+                                            <div class="dropdown-option" style="--i:70;" class="option-text" data-value="70">Honduras</div>
+                                            <div class="dropdown-option" style="--i:71;" class="option-text" data-value="71">Croatia</div>
+                                            <div class="dropdown-option" style="--i:72;" class="option-text" data-value="72">Hungary</div>
+                                            <div class="dropdown-option" style="--i:73;" class="option-text" data-value="73">Indonesia</div>
+                                            <div class="dropdown-option" style="--i:74;" class="option-text" data-value="74">Isle of Man</div>
+                                            <div class="dropdown-option" style="--i:75;" class="option-text" data-value="75">India</div>
+                                            <div class="dropdown-option" style="--i:76;" class="option-text" data-value="76">Ireland</div>
+                                            <div class="dropdown-option" style="--i:77;" class="option-text" data-value="77">Iran</div>
+                                            <div class="dropdown-option" style="--i:78;" class="option-text" data-value="78">Iraq</div>
+                                            <div class="dropdown-option" style="--i:79;" class="option-text" data-value="79">Iceland</div>
+                                            <div class="dropdown-option" style="--i:80;" class="option-text" data-value="80">Israel</div>
+                                            <div class="dropdown-option" style="--i:81;" class="option-text" data-value="81">Italy</div>
+                                            <div class="dropdown-option" style="--i:82;" class="option-text" data-value="82">Jamaica</div>
+                                            <div class="dropdown-option" style="--i:83;" class="option-text" data-value="83">Jersey</div>
+                                            <div class="dropdown-option" style="--i:84;" class="option-text" data-value="84">Jordan</div>
+                                            <div class="dropdown-option" style="--i:85;" class="option-text" data-value="85">Japan</div>
+                                            <div class="dropdown-option" style="--i:86;" class="option-text" data-value="86">Kazakhstan</div>
+                                            <div class="dropdown-option" style="--i:87;" class="option-text" data-value="87">Kenya</div>
+                                            <div class="dropdown-option" style="--i:88;" class="option-text" data-value="88">Cambodia</div>
+                                            <div class="dropdown-option" style="--i:89;" class="option-text" data-value="89">Kiribati</div>
+                                            <div class="dropdown-option" style="--i:90;" class="option-text" data-value="90">Saint Kitts</div>
+                                            <div class="dropdown-option" style="--i:91;" class="option-text" data-value="91">South Korea</div>
+                                            <div class="dropdown-option" style="--i:92;" class="option-text" data-value="92">Kuwait</div>
+                                            <div class="dropdown-option" style="--i:93;" class="option-text" data-value="93">Laos</div>
+                                            <div class="dropdown-option" style="--i:94;" class="option-text" data-value="94">Lebanon</div>
+                                            <div class="dropdown-option" style="--i:95;" class="option-text" data-value="95">Libya</div>
+                                            <div class="dropdown-option" style="--i:96;" class="option-text" data-value="96">Saint Lucia</div>
+                                            <div class="dropdown-option" style="--i:97;" class="option-text" data-value="97">Liechtenstein</div>
+                                            <div class="dropdown-option" style="--i:98;" class="option-text" data-value="98">Sri Lanka</div>
+                                            <div class="dropdown-option" style="--i:99;" class="option-text" data-value="99">Lithuania</div>
+                                            <div class="dropdown-option" style="--i:100;" class="option-text" data-value="100">Luxembourg</div>
+                                            <div class="dropdown-option" style="--i:101;" class="option-text" data-value="101">Latvia</div>
+                                            <div class="dropdown-option" style="--i:102;" class="option-text" data-value="102">Macao</div>
+                                            <div class="dropdown-option" style="--i:103;" class="option-text" data-value="103">Morocco</div>
+                                            <div class="dropdown-option" style="--i:104;" class="option-text" data-value="104">Monaco</div>
+                                            <div class="dropdown-option" style="--i:105;" class="option-text" data-value="105">Madagascar</div>
+                                            <div class="dropdown-option" style="--i:106;" class="option-text" data-value="106">Maldives</div>
+                                            <div class="dropdown-option" style="--i:107;" class="option-text" data-value="107">Mexico</div>
+                                            <div class="dropdown-option" style="--i:108;" class="option-text" data-value="108">North Macedonia</div>
+                                            <div class="dropdown-option" style="--i:109;" class="option-text" data-value="109">Mali</div>
+                                            <div class="dropdown-option" style="--i:110;" class="option-text" data-value="110">Malta</div>
+                                            <div class="dropdown-option" style="--i:111;" class="option-text" data-value="111">Myanmar</div>
+                                            <div class="dropdown-option" style="--i:112;" class="option-text" data-value="112">Montenegro</div>
+                                            <div class="dropdown-option" style="--i:113;" class="option-text" data-value="113">Mozambique</div>
+                                            <div class="dropdown-option" style="--i:114;" class="option-text" data-value="114">Mauritania</div>
+                                            <div class="dropdown-option" style="--i:115;" class="option-text" data-value="115">Mauritius</div>
+                                            <div class="dropdown-option" style="--i:116;" class="option-text" data-value="116">Malawi</div>
+                                            <div class="dropdown-option" style="--i:117;" class="option-text" data-value="117">Malaysia</div>
+                                            <div class="dropdown-option" style="--i:118;" class="option-text" data-value="118">Mayotte</div>
+                                            <div class="dropdown-option" style="--i:119;" class="option-text" data-value="119">Namibia</div>
+                                            <div class="dropdown-option" style="--i:120;" class="option-text" data-value="120">New Caledonia</div>
+                                            <div class="dropdown-option" style="--i:121;" class="option-text" data-value="121">Nigeria</div>
+                                            <div class="dropdown-option" style="--i:122;" class="option-text" data-value="122">Nicaragua</div>
+                                            <div class="dropdown-option" style="--i:123;" class="option-text" data-value="123">Netherlands</div>
+                                            <div class="dropdown-option" style="--i:124;" class="option-text" data-value="124">Norway</div>
+                                            <div class="dropdown-option" style="--i:125;" class="option-text" data-value="125">Nepal</div>
+                                            <div class="dropdown-option" style="--i:126;" class="option-text" data-value="126">New Zealand</div>
+                                            <div class="dropdown-option" style="--i:127;" class="option-text" data-value="127">Oman</div>
+                                            <div class="dropdown-option" style="--i:128;" class="option-text" data-value="128">Pakistan</div>
+                                            <div class="dropdown-option" style="--i:129;" class="option-text" data-value="129">Panama</div>
+                                            <div class="dropdown-option" style="--i:130;" class="option-text" data-value="130">Peru</div>
+                                            <div class="dropdown-option" style="--i:131;" class="option-text" data-value="131">Philippines</div>
+                                            <div class="dropdown-option" style="--i:132;" class="option-text" data-value="132">Palau</div>
+                                            <div class="dropdown-option" style="--i:133;" class="option-text" data-value="133">Poland</div>
+                                            <div class="dropdown-option" style="--i:134;" class="option-text" data-value="134">Puerto Rico</div>
+                                            <div class="dropdown-option" style="--i:135;" class="option-text" data-value="135">Portugal</div>
+                                            <div class="dropdown-option" style="--i:136;" class="option-text" data-value="136">Paraguay</div>
+                                            <div class="dropdown-option" style="--i:137;" class="option-text" data-value="137">F.Polynesia</div>
+                                            <div class="dropdown-option" style="--i:138;" class="option-text" data-value="138">Qatar</div>
+                                            <div class="dropdown-option" style="--i:139;" class="option-text" data-value="139">Romania</div>
+                                            <div class="dropdown-option" style="--i:140;" class="option-text" data-value="140">Russia</div>
+                                            <div class="dropdown-option" style="--i:141;" class="option-text" data-value="141">Rwanda</div>
+                                            <div class="dropdown-option" style="--i:142;" class="option-text" data-value="142">Saudi Arabia</div>
+                                            <div class="dropdown-option" style="--i:143;" class="option-text" data-value="143">Sudan</div>
+                                            <div class="dropdown-option" style="--i:144;" class="option-text" data-value="144">Senegal</div>
+                                            <div class="dropdown-option" style="--i:145;" class="option-text" data-value="145">Singapore</div>
+                                            <div class="dropdown-option" style="--i:146;" class="option-text" data-value="146">Sierra Leone</div>
+                                            <div class="dropdown-option" style="--i:147;" class="option-text" data-value="147">El Salvador</div>
+                                            <div class="dropdown-option" style="--i:148;" class="option-text" data-value="148">San Marino</div>
+                                            <div class="dropdown-option" style="--i:149;" class="option-text" data-value="149">Serbia</div>
+                                            <div class="dropdown-option" style="--i:150;" class="option-text" data-value="150">São Tomé</div>
+                                            <div class="dropdown-option" style="--i:151;" class="option-text" data-value="151">Suriname</div>
+                                            <div class="dropdown-option" style="--i:152;" class="option-text" data-value="152">Slovakia</div>
+                                            <div class="dropdown-option" style="--i:153;" class="option-text" data-value="153">Slovenia</div>
+                                            <div class="dropdown-option" style="--i:154;" class="option-text" data-value="154">Sweden</div>
+                                            <div class="dropdown-option" style="--i:155;" class="option-text" data-value="155">Seychelles</div>
+                                            <div class="dropdown-option" style="--i:156;" class="option-text" data-value="156">Syria</div>
+                                            <div class="dropdown-option" style="--i:157;" class="option-text" data-value="157">Togo</div>
+                                            <div class="dropdown-option" style="--i:158;" class="option-text" data-value="158">Thailand</div>
+                                            <div class="dropdown-option" style="--i:159;" class="option-text" data-value="159">Tajikistan</div>
+                                            <div class="dropdown-option" style="--i:160;" class="option-text" data-value="160">East Timor</div>
+                                            <div class="dropdown-option" style="--i:161;" class="option-text" data-value="161">Tunisia</div>
+                                            <div class="dropdown-option" style="--i:162;" class="option-text" data-value="162">Turkey</div>
+                                            <div class="dropdown-option" style="--i:163;" class="option-text" data-value="163">Taiwan</div>
+                                            <div class="dropdown-option" style="--i:164;" class="option-text" data-value="164">Tanzania</div>
+                                            <div class="dropdown-option" style="--i:165;" class="option-text" data-value="165">Uganda</div>
+                                            <div class="dropdown-option" style="--i:166;" class="option-text" data-value="166">Ukraine</div>
+                                            <div class="dropdown-option" style="--i:167;" class="option-text" data-value="167">US Minor</div>
+                                            <div class="dropdown-option" style="--i:168;" class="option-text" data-value="168">Uruguay</div>
+                                            <div class="dropdown-option" style="--i:169;" class="option-text" data-value="169">United States</div>
+                                            <div class="dropdown-option" style="--i:170;" class="option-text" data-value="170">Uzbekistan</div>
+                                            <div class="dropdown-option" style="--i:171;" class="option-text" data-value="171">Venezuela</div>
+                                            <div class="dropdown-option" style="--i:172;" class="option-text" data-value="172">Virgin Islands</div>
+                                            <div class="dropdown-option" style="--i:173;" class="option-text" data-value="173">Vietnam</div>
+                                            <div class="dropdown-option" style="--i:174;" class="option-text" data-value="174">South Africa</div>
+                                            <div class="dropdown-option" style="--i:175;" class="option-text" data-value="175">Zambia</div>
+                                            <div class="dropdown-option" style="--i:176;" class="option-text" data-value="176">Zimbabwe</div>                                
+                                        </div>
+                                        <input type="hidden" name="country" value="">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="marketSegmentDropdown">
+                                        <div class="dropdown-selected">Market Segment <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">Aviation</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">Complementary</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">Corporate</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">Direct</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">Groups</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">Offline TA/TO</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">Online TA</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">Not Specified</div>
+                                        </div>
+                                        <input type="hidden" name="market_segment" value="">
+                                    </div>
+                                </div>
+                                
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="isRepeatGuestDropdown">
+                                        <div class="dropdown-selected">Repeat Guest <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">No</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">Yes</div>
+                                        </div>
+                                        <input type="hidden" name="is_repeated_guest" value="">
+                                    </div>
+                                </div>
+                            
+                            </div>
+                    
+                        <!-- Row 3 -->
+                        <!-- <button type="button" class="accordion">Basic Information</button> -->
+                            <div class="input-row">
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="cancellationDropdown">
+                                        <div class="dropdown-selected">Cancellations<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">11</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="12">12</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="13">13</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="14">14</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="15">15</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="16">16</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="17">17</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="18">18</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="19">19</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="20">20</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="21">21</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="22">22</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="23">23</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="24">24</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="25">25</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="26">26</div>
+                                        </div>
+                                        <input type="hidden" name="previous_cancellations" value="">
+                                    </div>
+                                </div>
+                                
+
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="completedDropdown">
+                                        <div class="dropdown-selected">Completed Stays<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">11</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="12">12</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="13">13</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="14">14</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="15">15</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="16">16</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="17">17</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="18">18</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="19">19</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="20">20</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="21">21</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="22">22</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="23">23</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="24">24</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="25">25</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="26">26</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="27">27</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="28">28</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="29">29</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="30">30</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="31">31</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="32">32</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="33">33</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="34">34</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="35">35</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="36">36</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="37">37</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="38">38</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="39">39</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="40">40</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="41">41</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="42">42</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="43">43</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="44">44</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="45">45</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="46">46</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="47">47</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="48">48</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="49">49</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="50">50</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="51">51</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="52">52</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="53">53</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="54">54</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="55">55</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="56">56</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="57">57</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="58">58</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="59">59</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="60">60</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="61">61</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="62">62</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="63">63</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="64">64</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="65">65</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="66">66</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="67">67</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="68">68</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="69">69</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="70">70</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="71">71</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="72">72</div>
+                                        </div>
+                                        <input type="hidden" name="previous_bookings_not_canceled" value="">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="reservedDropdown">
+                                        <div class="dropdown-selected">Reserved Room<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">Accessible Room</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">Bungalow</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">Connecting Rooms</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">Deluxe</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">Apartment Style</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">Family</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">Standard</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">Adaptable</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">Loft</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">Penthouse</div>
+                                        </div>
+                                        <input type="hidden" name="reserved_room_type" value="">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="assignedDropdown">
+                                        <div class="dropdown-selected">Assigned Room<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">Accessible</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">Bungalow</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">Connecting Rooms</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">Deluxe</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">Apartment Style</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">Family</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">Standard</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">Adaptable Room</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">Interconnecting </div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">King Size</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">Loft</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">Penthouse</div>
+                                        </div>
+                                        <input type="hidden" name="assigned_room_type" value="">
+                                    </div>
+                                </div>
+                                        
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="bookingChangesDropdown">
+                                        <div class="dropdown-selected">Booking Changes<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="6">6</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="7">7</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="8">8</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="9">9</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="10">10</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="11">11</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="12">12</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="13">13</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="14">14</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="15">15</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="16">16</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="17">17</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="18">18</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="19">19</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="20">20</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="21">21</div>
+                                        </div>
+                                        <input type="hidden" name="booking_changes" value="">
+                                    </div>
+                                </div>
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="depositDropdown">
+                                        <div class="dropdown-selected">Deposit Type<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">No Deposit</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">Non Refund</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">Refundable</div>
+                                        </div>
+                                        <input type="hidden" name="deposit_type" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        <!-- Row 4 -->
+                        <!-- <button type="button" class="accordion">Basic Information</button> -->
+                            <div class="input-row">
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="WaitListDropdown">
+                                        <div class="dropdown-selected">Wait List <ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options" id="daysOnWaitListOptions"></div>
+                                        <input type="hidden" name="days_in_waiting_list" value="">
+                                    </div>
+                                </div>
+                                
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="customerDropdown">
+                                        <div class="dropdown-selected">Customer Type<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">Contract</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">Group</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">Transient</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">Transient-Party</div>
+                                        </div>
+                                        <input type="hidden" name="customer_type" value="">
+                                    </div>
+                                </div>
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="nightlyHoursDropdown">
+                                        <div class="dropdown-selected">Nightly Rate<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options" id="nightlyHoursOptions"></div>
+                                        <input type="hidden" name="adr" value="">
+                                    </div>
+                                </div>
+
+                                <div class="input-box">
+                                    <div class="custom-dropdown" id="requestsDropdown">
+                                        <div class="dropdown-selected">Special Requests<ion-icon name="chevron-down-outline" class="icon-arrow"></ion-icon></div>
+                                        <div class="dropdown-options">
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="0">0</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="1">1</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="2">2</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="3">3</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="4">4</div>
+                                            <div class="dropdown-option" style="--i:5;" class="option-text" data-value="5">5</div>
+                                        </div>
+                                        <input type="hidden" name="total_of_special_requests" value="">
+                                    </div>
+                                </div>
+                            
+
+                            </div>
+                        <!-- end of input boxes -->
+                        
+                    </div>    
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="container">
+                <input type="submit" value ="Evaluate" id ="estimate" >
+            </div>
+        
+            
+        </form>
+    </div>   
+
+        <footer id="author">
+            <p>&copy; 2024| All Rights Reserved | Peace Edogun.</p>
+          </footer>
+
+        </section>
+
+     
+
+        <div id="tiltPopup" class="popup-overlay">
+            <div class="popup-content">
+                <h2>For the ease of use</h2>
+                <p>Tilt your device sideways</p>
+                <button id="closePopup">Close</button>
+            </div>
+        </div>
+        
+        
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../static/js/test.js"></script>
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+

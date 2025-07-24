@@ -1,0 +1,3334 @@
+
+/* Add more styles for dropdowns and icons if necessary */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cinzel', serif;
+}
+
+body {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    min-height: 100vh;
+    /* overflow: hidden; */
+    font-family: "Cinzel", serif;
+    background-color: #1e1e1e;;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%; 
+    max-width: 95%; 
+    margin: 0 auto; 
+}
+
+/* Console Section */
+.console-section {
+    width: 97%;
+    margin: 20px auto;
+    background-color: #2b2b2b; /* Dark grey background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    max-height: 70vh;
+    overflow: hidden;
+}
+
+.console-section h2 {
+    margin-bottom: 4px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #cccccc; /* Light grey for heading */
+    position: sticky;
+    top: 0; /* Sticky header for h2 */
+    background-color: #2b2b2b; /* Same background as the console section */
+    z-index: 15;
+    /* padding: 2px; */
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: -1px;
+    color: #b36741; /* Orange color for headings */
+}
+
+/* Predictions container styling */
+.predictions-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    overflow-y: auto; 
+    height: 25vh; /* Fixed height for the predictions container */
+    max-height: 60vh; /* Maximum height */
+    padding: 20px; /* Adds some padding */
+    margin-bottom: 20px; /* Spacing below the container */
+    background-color: #1a1a1a; /* Darker background color for the inset */
+    border: 1px solid #444; /* Border to define the inset */
+    border-radius: 12px; /* Rounded corners for the inset */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inset shadow effect */
+}
+
+/* New styling for horizontal scrolling */
+/* .table-scroll {
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    width: 100%; 
+    height: 320px; /
+} */
+
+
+#guestTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+
+#guestTable th,
+#guestTable td {
+    padding: 8px 10px;
+    border: 1px solid #3b3434;
+    border-radius: 4px;
+    text-align: left;
+    color: #e0e0e0;
+    white-space: nowrap;  /* Prevents text from wrapping */
+}
+
+.button-header {
+    background-color: #675d5d; /* Slightly lighter background for depth */
+    color: #e0e0e0; /* Lighter text color for contrast */
+    font-weight: 500;
+    cursor: pointer; /* Changes cursor to pointer for button effect */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth background and transform changes */
+    border-radius: 4px; /* Round corners for pill effect */
+    padding: 10px 20px; /* Padding for button size */
+    box-shadow: 0 4px 6px rgba(24, 24, 24, 0.3), inset 0 -2px 5px rgba(255, 255, 255, 0.1); /* Outer shadow for depth and inset for emboss */
+}
+
+/* Hover effect */
+.button-header:hover {
+    background-color: #6b6161; /* Lighter background on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+
+/* .button-header:hover {
+    background-color: #444; 
+} */
+
+/* Adjusted styles for table rows */
+#guestTable tbody tr:nth-child(even) {
+    background-color: #3a3a3a;
+}
+
+#guestTable tbody tr:nth-child(odd) {
+    background-color: #2e2e2e;
+}
+
+#guestTable tbody tr:hover {
+    background-color: #444; /* Highlighted row on hover */
+}
+
+
+
+.input-section {
+    margin-top: -1%;
+    padding: 20px;
+    background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+    border: 1px solid #444; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+    border-radius: 8px; 
+    color: #fff; 
+    width: 110%; 
+    margin-left: -5%;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.input-box {
+    flex: 1 1 calc(16.66% - 20px); /* For 6 columns in first 3 rows */
+    margin: 2px;
+    min-width: 210px; /* Minimum width for input boxes */
+    color: white;
+    border-radius: 5px; /* Rounded corners for input boxes */
+    padding: -3px; /* Add padding for better usability */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between; /* Even space between inputs */
+    margin-bottom: 10px;
+}
+
+.two-forms {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+}
+
+
+.form-box {
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+/* Dropdown styles */
+.custom-dropdown {
+    position: relative;
+    width: 100%; /* Make the dropdown full width */
+}
+/* Ensure only the border color is changing on invalid inputs */
+.invalid {
+    border-color: red !important; /* Ensure border is red on invalid */
+    border-width: 2px; /* Slightly thicker border to emphasize the error */
+    box-shadow: none; /* Prevent shadow that might look like a second box */
+    background-color: inherit; /* Keep background consistent */
+}
+
+/* Update the dropdown-selected class to maintain consistent input styles */
+.dropdown-selected {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #b36741; /* Orange default border */
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    color: #fff;
+    min-width: 120px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease; /* Smooth transition for border change */
+}
+
+.custom-dropdown.invalid .dropdown-selected {
+    border-color: red !important; /* Ensure red border overrides any other styles */
+    border-width: 2px; /* Add thickness for better emphasis */
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%; /* Place the dropdown options below the selected area */
+    left: 0;
+    width: 100%;
+    max-height: 150px; /* Add a maximum height for scrollable options */
+    background-color: #71452f;
+    opacity: .9;
+    border-radius: 5px;
+    overflow: auto;
+    display: none;
+    margin: 2px;
+    z-index: 2; /* Ensure the dropdown options are above other content */
+}
+
+.dropdown-option {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border-top: 2px solid rgba(149, 100, 100, 0.2);
+}
+
+.dropdown-option:hover {
+    background-color: #42302e;
+}
+
+/* Show options when dropdown is active */
+.custom-dropdown.active .dropdown-options {
+    display: block;
+}
+
+/* Rotate arrow icon on active */
+.custom-dropdown.active .icon-arrow {
+    transform: rotate(180deg);
+    transition: 1s;
+}
+
+.custom-dropdown {
+    position: relative;
+}
+
+.custom-dropdown input {
+    padding-right: 30px; /* Adjust space between the text and the icon */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.custom-dropdown .icon-arrow {
+    position: absolute;
+    right: 20px; /* Position the arrow closer to the edge */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center the icon */
+    pointer-events: none; /* Prevent clicking on the icon */
+}
+
+
+
+/* Style for the Estimate button */
+#estimate {
+    font-size: 15px;
+    font-weight: 300;
+    color: #F9F9F9; /* Soft White for text */
+    background-color: rgba(222, 107, 12, 0.8); /* Burnt Orange for standout CTA */
+    height: 45px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center; /* Center text */
+}
+
+/* Style for the icon next to the button */
+.icon {
+    position: absolute;
+    font-size: 20px;
+    color: #F9F9F9; /* Match button text color */
+    right: -30px; /* Adjust this value to control distance from the button */
+}
+
+/* Hover and active states */
+#estimate:hover {
+    background: rgba(122, 79, 79, 0.8); /* Softer hover effect */
+}
+
+#estimate:active {
+    background-color: #444; /* Darker on click */
+    transform: scale(0.95);
+}
+
+
+
+/* Flex container to center the button */
+.container {
+    margin-top: -1%;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 11vh;
+    position: relative;
+}
+
+
+#author {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  color: rgb(217, 213, 213);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 12px;
+  z-index: 9999;
+}
+
+
+
+
+
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Prevent interaction when hidden */
+    /* transition: opacity 0.3s ease, visibility 0.3s ease; */
+}
+
+.popup-overlay.show {
+    opacity: 1; /* Fade in */
+    visibility: visible; /* Make visible */
+}
+
+.popup-content {
+    background: rgba(227, 170, 47, 0.642);
+    /* opacity: .6; */
+    color: rgb(221, 216, 216);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 700px;
+    height: 100px;
+}
+
+.popup-content h2{
+    font-size: 30px;
+}
+.popup-content p{
+    font-size: 30px;
+}
+
+#closePopup {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #282725;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none;
+}
+
+#closePopup:hover {
+    background: #0056b3; /* Darken button on hover */
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 480px){
+
+    h1{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        width: 105%;
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -1px !important;
+        margin-left: -1.5%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+
+    
+    
+    #guestTable {
+        font-size: 10px;
+    }
+    
+    #guestTable th,
+    #guestTable td {
+        color: #e0e0e0;
+   }
+    
+    .button-header {
+        margin-top: -1%;
+    }
+
+    .input-section {
+        margin-top: -3%;
+        display: grid; /* Use grid to manage the layout */
+        grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+        grid-template-rows: repeat(6, auto); 
+        width: 531px;
+        margin-left: 1%;
+    }
+    
+    .input-row {
+        display: flex;
+        flex-wrap: wrap; /* Ensure input boxes wrap into rows */
+        justify-content: space-between;
+        width: 80%;
+        margin-bottom: 10px;
+        margin-left: -13%;
+    }
+    
+    .input-box {
+        margin: 2px; /* Add some margin between input boxes */
+        font-size: 12px;
+        gap: 10px;
+        min-width: unset; /* Remove minimum width constraint */
+    }
+    
+    .form-box {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+    
+    #estimate {
+        width: 20%; /* Make the button full-width */
+        height: 30px; /* Adjust height */
+    }
+    
+    .custom-dropdown .icon-arrow {
+        right: 10px; /* Move the arrow closer to the edge */
+    }
+    .dropdown-selected{
+        width: 40%;
+    }
+    
+    .custom-dropdown .icon-arrow {
+        position: absolute;
+        right: 20px; /* Position the arrow closer to the edge */
+        top: 50%;
+        transform: translateY(-50%); /* Vertically center the icon */
+    }
+
+    #author {
+    display: none;
+    }
+
+}
+
+
+@media only screen and (min-width: 533px) and (max-width: 633px){
+
+    h1{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        width: 105%;
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -1px !important;
+        margin-left: -1.5%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+
+    
+    
+    #guestTable {
+        font-size: 10px;
+    }
+    
+    #guestTable th,
+    #guestTable td {
+        color: #e0e0e0;
+   }
+    
+    .button-header {
+        margin-top: -1%;
+    }
+
+    .input-section {
+        margin-top: -3%;
+        display: grid; /* Use grid to manage the layout */
+        grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+        grid-template-rows: repeat(6, auto); 
+        width: 531px;
+        margin-left: 1%;
+    }
+    
+    .input-row {
+        display: flex;
+        flex-wrap: wrap; /* Ensure input boxes wrap into rows */
+        justify-content: space-between;
+        width: 80%;
+        margin-bottom: 10px;
+        margin-left: -13%;
+    }
+    
+    .input-box {
+        margin: 2px; /* Add some margin between input boxes */
+        font-size: 12px;
+        gap: 10px;
+        min-width: unset; /* Remove minimum width constraint */
+    }
+    
+    .form-box {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+    
+    #estimate {
+        width: 20%; /* Make the button full-width */
+        height: 30px; /* Adjust height */
+    }
+    
+    .custom-dropdown .icon-arrow {
+        right: 10px; /* Move the arrow closer to the edge */
+    }
+    .dropdown-selected{
+        width: 40%;
+    }
+    
+    .custom-dropdown .icon-arrow {
+        position: absolute;
+        right: 20px; /* Position the arrow closer to the edge */
+        top: 50%;
+        transform: translateY(-50%); /* Vertically center the icon */
+    }
+
+    #author {
+    display: none;
+    }
+
+}
+
+@media only screen and (min-width: 568px) and (max-width: 568px){
+
+    h1{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        width: 105%;
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -1px !important;
+        margin-left: .5%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+
+    
+    
+    #guestTable {
+        font-size: 10px;
+    }
+    
+    #guestTable th,
+    #guestTable td {
+        color: #e0e0e0;
+   }
+    
+    .button-header {
+        margin-top: -1%;
+    }
+
+    .input-section {
+        margin-top: -3%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 94%; 
+        margin-left: 5.5%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 80% !important;
+        margin-bottom: 20px;
+        margin-left: -7.8%;
+        align-items: center !important;
+    }
+    .input-box {
+        grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+        grid-template-rows: repeat(5, auto);
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: 3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+    
+    #estimate {
+    font-size: 12px;
+        width: 14%; /* Make the button full-width */
+        height: 30px; /* Adjust height */
+        margin-left: 7%;
+    }
+
+}
+
+
+@media only screen and (min-width: 640px) and (max-width: 640px){
+
+    h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -.5%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+@media only screen and (min-width: 280px) and (max-width: 475px){
+
+    h1{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+       
+    #guestTable {
+        font-size: 10px;
+    }
+    
+    #guestTable th,
+    #guestTable td {
+        color: #e0e0e0;
+   }
+    
+    .button-header {
+        margin-top: -1%;
+    }
+
+
+    .input-section {
+        margin-top: -3%;
+        display: grid; /* Use grid to manage the layout */
+        grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+        grid-template-rows: repeat(6, auto); 
+        width: 603px;
+        margin-left: -.3%;
+    }
+    
+    .input-row {
+        display: flex;
+        flex-wrap: wrap; /* Ensure input boxes wrap into rows */
+        justify-content: space-between;
+        width: 90%;
+        margin-bottom: 10px;
+    }
+    
+    .input-box {
+        margin: 2px; /* Add some margin between input boxes */
+        font-size: 10px;
+        min-width: unset; /* Remove minimum width constraint */
+    }
+    
+    .form-box {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+    
+    #estimate {
+        width: 20%; /* Make the button full-width */
+        height: 30px; /* Adjust height */
+    }
+    
+    .custom-dropdown .icon-arrow {
+        right: 10px; /* Move the arrow closer to the edge */
+    }
+    .dropdown-selected{
+        width: 40%;
+    }
+    
+    .custom-dropdown .icon-arrow {
+        position: absolute;
+        right: 20px; /* Position the arrow closer to the edge */
+        top: 50%;
+        transform: translateY(-50%); /* Vertically center the icon */
+    }
+
+    #author {
+    display: none;
+    }
+
+}
+
+
+@media only screen and (min-width: 641px) and (max-width: 655px){
+
+     h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+@media only screen and (min-width: 658px) and (max-width: 658px){
+
+    h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+
+}
+
+
+@media only screen and (min-width: 667px) and (max-width: 719px){
+
+    h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1.5%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+@media only screen and (min-width: 720px) and (max-width: 723px){
+
+     h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 116%;
+        margin-left: -.5%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 12.2%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+@media only screen and (min-width: 724px) and (max-width: 730px){
+
+     h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+
+}
+
+
+@media only screen and (min-width: 731px) and (max-width: 735px){
+
+     h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 116%;
+        margin-left: -1.2%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 12%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+
+}
+
+
+@media only screen and (min-width: 736px) and (max-width: 736px){
+
+    h1{
+        font-size: 20px;
+        margin-left: 15%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        margin-left: 8.3%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+
+    
+    
+    #guestTable {
+        font-size: 10px;
+    }
+    
+    #guestTable th,
+    #guestTable td {
+        color: #e0e0e0;
+   }
+    
+    .button-header {
+        margin-top: -1%;
+    }
+
+    .input-section {
+        margin-top: -3%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 87%; 
+        margin-left: 11.5%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 80% !important;
+        margin-bottom: 20px;
+        margin-left: -1%;
+        align-items: center !important;
+    }
+    .input-box {
+        grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+        grid-template-rows: repeat(5, auto);
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: 3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+    
+    #estimate {
+    font-size: 12px;
+        width: 12%; /* Make the button full-width */
+        height: 30px; /* Adjust height */
+        margin-left: 10%;
+    }
+}
+
+
+@media only screen and (min-width: 740px) and (max-width: 782px){
+
+    h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 115%;
+        margin-left: -1.1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 11.8%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1.6%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+@media only screen and (min-width: 783px) and (max-width: 799px){
+
+    h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+
+}
+
+
+@media only screen and (min-width: 800px) and (max-width: 811px){
+
+     h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+@media only screen and (min-width: 812px) and (max-width: 822px){
+
+     h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+
+@media only screen and (min-width: 823px) and (max-width: 823px) {
+    h1{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+
+    
+    
+    #guestTable {
+        font-size: 10px;
+    }
+    
+    #guestTable th,
+    #guestTable td {
+        color: #e0e0e0;
+   }
+    
+    .button-header {
+        margin-top: -1%;
+    }
+
+    .input-section {
+        margin-top: -3%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 87%; 
+        margin-left: 6.7%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 80% !important;
+        margin-bottom: 20px;
+        margin-left: -1%;
+        align-items: center !important;
+    }
+    .input-box {
+        grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+        grid-template-rows: repeat(5, auto);
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: 3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+    
+    #estimate {
+    font-size: 12px;
+        width: 14%; /* Make the button full-width */
+        height: 30px; /* Adjust height */
+        margin-left: 15%;
+    }
+}
+
+
+@media only screen and (min-width: 824px) and (max-width: 843px) {
+    h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+@media only screen and (min-width: 844px) and (max-width: 853px) {
+    .console-section{
+        width: 116%;
+        margin-left: -2%;
+    }
+    .input-section {
+        margin-top: -3%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 97%; 
+        margin-left: 7%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin-bottom: 20px;
+        margin-left: -.4%;
+        font-size: 10px;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        min-width: 150px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 852px) and (max-width: 852px) {
+    .console-section{
+        width: 117.5%;
+        margin-left: -1.5%;
+    }
+    .input-section {
+        margin-top: -3%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 97%; 
+        margin-left: 7%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin-bottom: 20px;
+        margin-left: -.4%;
+        font-size: 10px;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        min-width: 150px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 854px) and (max-width: 895px) {
+     h1{
+        font-size: 20px;
+        margin-left: 25%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+
+    .console-section {
+        margin-top: 1%;
+        overflow: hidden;
+        padding-bottom: -2px !important;
+        width: 123%;
+        margin-left: -1%;
+    }
+    
+
+    
+    /* Predictions container styling */
+    .predictions-container {
+        height: 35vh; /* Fixed height for the predictions container */
+        /* max-height: 40vh; */
+        padding: 10px; /* Adds some padding */
+        margin-bottom: 1px; /* Spacing below the container */
+       }
+    
+        #guestTable {
+            font-size: 10px;
+        }
+        
+        #guestTable th,
+        #guestTable td {
+            color: #e0e0e0;
+        }
+        
+        .button-header {
+            margin-top: -1%;
+        }
+
+
+
+
+
+        .input-section {
+            margin-top: -3%;
+            padding: 20px;
+            background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+            border: 1px solid #444; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            border-radius: 8px; 
+            color: #fff; 
+            width: 87%; 
+            margin-left: 14%;
+        }
+        
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 80% !important;
+            margin-bottom: 20px;
+            margin-left: -1%;
+            align-items: center !important;
+        }
+        .input-box {
+            grid-template-columns: repeat(5, 1fr) !important; /* Create 6 equal columns */
+            grid-template-rows: repeat(5, auto);
+            margin: 2px;
+            font-size: 10px;
+            min-width: 120px; /* Minimum width for input boxes */
+            color: white;
+            border-radius: 5px; /* Rounded corners for input boxes */
+            padding: 3px; /* Add padding for better usability */
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between; /* Even space between inputs */
+            margin-bottom: 10px;
+        }
+        
+        #author{
+            display: none;
+        }
+        
+        #estimate {
+        font-size: 12px;
+            width: 14%; /* Make the button full-width */
+            height: 30px; /* Adjust height */
+            margin-left: 15%;
+        }
+}
+
+
+
+
+
+@media only screen and (min-width: 896px) and (max-width: 913px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 882px) and (max-width: 882px) {
+    h1{
+        font-size: 20px;
+        margin-left: 1%;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+        margin-top: -2%;
+    }
+
+    .console-section{
+        width: 101.5%;
+        margin-left: .5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 97%; 
+        margin-left: 2.5%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 134px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+        margin-left: -1%;
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+
+    #estimate{
+        margin-left: -1%;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 883px) and (max-width: 883px) {
+    h1{
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 22px;
+        display: none;
+    }
+    .console-section h1{
+        margin-top: -5%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+        margin-top: -2%;
+    }
+
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 914px) and (max-width: 914px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 915px) and (max-width: 925px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 926px) and (max-width: 931px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 932px) and (max-width: 1023px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1179px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1180px) and (max-width: 1180px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 1280px) and (max-width: 1280px) {
+    .console-section{
+        width: 101.5%;
+        margin-left: -.7%;
+    }
+
+    #guestTable {
+        font-size: 10px;
+    }
+
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 102%; 
+        margin-left: -1%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        font-size: 10px;
+        min-width: 120px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+
+
+/* =====================FOR WIDTH AND HEIGHT=================== */
+
+
+@media only screen and (min-height: 533px) and (max-height: 533px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+
+@media only screen and (min-width: 360px) and (max-width: 360px){
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-width: 344px) and (max-width: 475px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-width: 312px) and (max-width: 320px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 375px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and(min-width: 384px) and (max-width: 384px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-width: 411px) and (max-width: 610px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 768px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-height: 844px) and (max-height: 844px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-height: 852px) and (max-height: 852px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-height: 883px) and (max-height: 895px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-height: 896px) and (max-height: 896px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+
+
+@media only screen and (min-width: 912px) and (max-width: 912px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-height: 915px) and (max-height: 915px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-height: 926px) and (max-height: 926px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+@media only screen and (min-height: 932px) and (max-height: 932px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+}
+
+
+
+
+/* =====================FOR WIDTH AND HEIGHT=================== */
+
+
+
+
+
+
+
+
+
+
+
+/* =====================FOR HEIGHT=================== */
+
+/* @media only screen and (min-height: 640px) and (max-height: 740px) {
+    .popup-overlay {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 0);
+    }
+} */
+
+
+@media only screen and (min-height: 712px) and (max-height: 712px) {
+    .console-section{
+        width: 100.5%;
+        margin-left: -.5%;
+    }
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 100%; 
+        margin-left: -.2%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        min-width: 170px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
+
+
+@media only screen and (min-height: 800px) and (max-height: 800px) {
+    .console-section{
+        width: 100.5%;
+        margin-left: -.5%;
+    }
+    .input-section {
+        margin-top: -1%;
+        padding: 20px;
+        background-color: rgba(42, 42, 42, 0.9); /* Make it slightly transparent to see input boxes better */
+        border: 1px solid #444; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+        border-radius: 8px; 
+        color: #fff; 
+        width: 112%; 
+        margin-left: -6%;
+    }
+    
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        width: 97%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    .input-box {
+        flex: 1 1 calc(13.66% - 10px); /* For 6 columns in first 3 rows */
+        margin: 2px;
+        min-width: 170px; /* Minimum width for input boxes */
+        color: white;
+        border-radius: 5px; /* Rounded corners for input boxes */
+        padding: -3px; /* Add padding for better usability */
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between; /* Even space between inputs */
+        margin-bottom: 10px;
+    }
+    
+    #author{
+        display: none;
+    }
+}
